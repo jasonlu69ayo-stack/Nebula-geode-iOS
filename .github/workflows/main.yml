@@ -4,12 +4,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check files
+
+      - name: Build iOS Geode mod
         run: |
-          ls -la
-          test -f mod.json
-          test -f CMakeLists.txt
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -w /workspace \
+            prevter/geode-sdk:ios-latest \
+            bash -lc 'cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build'
+
+      - name: Find the .geode file
+        run: |
+          find . -type f -name '*.geode'
+          test -n "$(find . -type f -name '*.geode' -print -quit)"
+
+      - name: Upload mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: NEBULA-geode
+          path: '**/*.geode'
+          if-no-files-found: error
