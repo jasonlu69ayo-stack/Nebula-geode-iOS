@@ -1,17 +1,4 @@
-name: Build NEBULA
-
-on:
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build iOS Geode mod
-        run: |
-          docker run --rm \
+docker run --rm \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
             prevter/geode-sdk:ios-latest 
