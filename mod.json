@@ -1,0 +1,23 @@
+{
+  "geode": "v5.11.2",
+  "gd": {
+    "ios": "2.2081"
+  },
+  "id": "jay.nebula",
+  "name": "NEBULA Mod Menu",
+  "version": "v0.4.1",
+  "developer": "NEBULA",
+  "description": "A minimal NEBULA foundation mod for Geometry Dash on iOS.",
+  "tags": [
+    "utility",
+    "interface"
+  ],
+  "settings": {
+    "enabled": {
+      "type": "bool",
+      "name": "Enable NEBULA",
+      "description": "Enable the NEBULA menu message.",
+      "default": true
+    }
+  }
+}
