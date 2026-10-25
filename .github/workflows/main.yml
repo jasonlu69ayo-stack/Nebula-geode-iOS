@@ -14,7 +14,7 @@ jobs:
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
-            prevter/geode-sdk:ios-5.9.0 \
+            prevter/geode-sdk:ios-latest 
              
 bash -lc 'rm -rf build && CXXFLAGS="-include Geode/fmod/fmod.hpp" cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build'
       - name: Find the .geode file
