@@ -1,4 +1,10 @@
+name: Build NEBULA
+on:
 
+  workflow_dispatch:
+  jobs:
+
+  build:
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
