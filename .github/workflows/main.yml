@@ -1,9 +1,10 @@
-docker run --rm \
+
+          docker run --rm \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
- 
-             
-bash -lc 'rm -rf build && CXXFLAGS="-include Geode/fmod/fmod.hpp" cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build'
+            prevter/geode-sdk:ios-latest \
+            bash -lc 'rm -rf build && cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build'
+
       - name: Find the .geode file
         run: |
           find . -type f -name '*.geode'
